@@ -1,0 +1,159 @@
+
+.burger__header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    /* background-color: #5e5373; */
+    z-index: 50;
+}
+
+.burger__header::before {
+    content: '';
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--card-bg);
+    z-index: 2;
+    
+}
+
+.burger__body{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+   
+}
+
+.header__burger-logo {
+    position: relative;
+    z-index: 3;
+}
+.burger__icon {
+    display: none;
+    
+}
+
+.burger__menu {   
+}
+.burger__list {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;  
+
+    transform: translate(0, 15%);
+}
+.burger__list li {
+    list-style: none;
+    margin-right: 12px;   
+}
+
+.nav-burger__list__link {
+    color: var(--text-color);
+    /* text-transform: uppercase; */
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.nav-burger__list__link--active {
+    color: var(--activ-link-color);
+    /* text-transform: uppercase; */
+    font-size: 18px;
+    text-decoration: none;
+}
+
+
+@media (max-width: 767px) {
+
+    .wrapper.lock {
+        
+    }
+
+    .burger__body {
+        height: 50px;
+    }
+    .burger__icon {
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        z-index: 3;
+        
+    }
+    .burger__icon span {
+        position: absolute;
+        background-color: var(--text-color);
+        
+        width: 100%;
+        height: 2px;
+        left: 0;
+        top: 9px;
+        transition: all 0.3s ease 0s;
+    }
+
+    .burger__icon::before,
+    .burger__icon::after {
+        content: '';
+        background-color: var(--text-color);
+        
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        transition: all 0.3s ease 0s;
+    }
+
+    .burger__icon::before {
+        top: 0;
+    }
+    .burger__icon::after {
+        bottom: 0;
+    }
+
+    .burger__icon.active span {
+        transform:  scale(0);
+
+    }
+
+    .burger__icon.active::before {
+        transform:  rotate(45deg);
+        top: 9px;
+    }
+
+    .burger__icon.active::after {
+        transform:  rotate(-45deg);
+        bottom: 9px;
+    }
+
+    .burger__menu {
+        position: fixed;
+        
+        
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: var(--page-bg);  
+        padding: 70px 10px 0 10px;
+        transition: all 0.3s ease 0s;
+        
+        
+    }
+
+    .burger__menu.active {
+        left: 0;
+    }
+
+    .burger__list {
+        display: block;
+    }
+
+    .burger__list li {
+        margin: 0 0 20px 0;
+    }
+}

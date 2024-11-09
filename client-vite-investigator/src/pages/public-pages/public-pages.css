@@ -1,0 +1,124 @@
+.forms-list {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card-main {
+  margin: 0 auto;
+  margin-top: 30vh;
+  position: relative;
+  max-width: 500px;
+  padding: 10px 15px;
+  background-color: var(--card-bg);
+}
+
+.dark-mode-btn-position {
+  position: absolute;
+  top: 5px;
+  right: -5px;
+}
+
+.form-control {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-bg);
+  color: var(--text-color);
+}
+
+.form-control::-webkit-input-placeholder {
+  color: var(--text-color);
+}
+
+.form-control:-ms-input-placeholder {
+  color: var(--text-color);
+}
+
+.form-control::-ms-input-placeholder {
+  color: var(--text-color);
+}
+
+.form-control::placeholder {
+  color: var(--text-color);
+}
+
+.form-control:focus {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+}
+
+.form-control:active {
+  background-color: var(--input-bg);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--input-bg);
+  -webkit-text-fill-color: var(--text-color);
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.min-height-form {
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-div {
+  position: relative;
+}
+
+.error-div {
+  margin-top: 35px;
+  height: 20px;
+  width: 100%;
+  text-align: left;
+  padding-left: 12px;
+  color: var(--error-color);
+}
+
+.button-auth-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.text-small {
+  padding-right: 10px;
+}
+
+.position-eye-icon {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -80%);
+          transform: translate(0, -80%);
+  right: 5px;
+  color: var(--text-color);
+}
+/*# sourceMappingURL=public-pages.css.map */

@@ -1,0 +1,72 @@
+
+.divChatsList {
+    // display: none;
+    height: 100%;
+    width: 100%;
+    color: var(--text-color);
+    background-color:  var(--card-bg);
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+
+    position: relative;
+
+}
+
+.divChatsList div {
+    padding: 2px 5px;
+    // border-radius:  10px 10px 0 0 ;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.divChatsList  :last-child {
+    border:  0 ;
+    border-radius:0 0  10px 10px;
+}
+
+.divChatsList  :hover {
+    background-color:  var(--card-bg-hover);
+    // border-radius: 10px;
+}
+
+.messageSerchBorder:hover {
+    background-color:  rgba(0, 0, 0, 0);
+}
+
+// .divChatsList :first-child :hover  {
+//     background-color:  red;
+//     // border-radius: 10px;
+// }
+
+.divChatsList div :hover {
+    background-color:  rgba(0, 0, 0, 0);
+    // border-radius: 10px;
+}
+
+.divChatItem {
+    // position: absolute;
+    height: 40px;
+    // width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    // background-color:  red;
+
+    
+    
+}
+
+
+
+.divChatItem  :last-child {
+    // display: none;
+
+    
+}
+
+
+
+.divChatItem div{
+    border: 0;
+}
+
+

@@ -1,0 +1,141 @@
+
+.forms-list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+ 
+
+.card-main {
+    
+    margin: 0 auto;
+    margin-top: 30vh;
+    position: relative;
+    // height: 400px;
+    max-width: 500px;
+    padding: 10px 15px; 
+    background-color: var(--card-bg); 
+    // padding-bottom: 10px;
+
+}
+
+
+.dark-mode-btn-position {
+    position: absolute;
+    top: 5px;
+
+    // transform: translate(-8%, 0);
+    right: -5px;
+}
+
+
+
+.form-control {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-bg);
+    color: var(--text-color);
+    
+    // width: 400px; 
+    // display: none !important;
+} 
+
+// .input-control::placeholder {
+//     color: var(--text-color); 
+// }
+
+.form-control::placeholder {
+    // display: none;
+    color: var(--text-color); 
+} 
+
+.form-control:focus {
+    background-color: var(--input-bg) ;
+    color: var(--text-color);
+    // display: none;
+    // color: var(--text-color) !important; 
+} 
+ 
+.form-control:active {
+    background-color: var(--input-bg);
+    // display: none;
+    // color: var(--text-color) !important; 
+} 
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid var(--input-bg);
+  -webkit-text-fill-color: var(--text-color);
+//   -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.textarea {
+    // background-color: var(--input-bg) ;
+    // display: none;
+    // color: var(--text-color) !important; 
+}
+
+
+
+
+
+
+
+
+.button-auth-row {
+    // display: none;
+}
+
+.min-height-form {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-error-div{
+    // display: flex;
+    // flex-direction: column;
+}
+
+.form-div {
+    position: relative;
+}
+
+.error-div {
+    margin-top: 35px;
+    height: 20px;
+    width: 100%;
+    // background-color: #7a1313;
+    text-align: left;
+    padding-left: 12px;
+    color: var(--error-color)
+}
+
+
+.button-auth-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-small {
+    padding-right: 10px;
+}
+
+.position-eye-icon {
+    // display: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -80%);
+    right: 5px;
+    color: var(--text-color) ;
+    // z-index: 50;
+}

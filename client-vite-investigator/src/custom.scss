@@ -1,0 +1,55 @@
+// Переопределите переменные по умолчанию перед импортом
+// вы можете открыть модуль bootstrap.scss и проверить все доступные переменные.
+$primary: #212529;
+$secondary: #9ba0a3;
+$success: #0d6efd;
+
+.white-text {
+    color: white;
+}
+
+.dark-text {
+    color: rgb(22, 20, 20);
+}
+
+
+$info: #adb5bd;
+$warning: #dee2e6;
+$danger: #9f8d8c;
+// $light: #f8f9fa;
+// $dark: #343a40;
+
+//настраиваемый цвет для сопоставления
+// $accent : #da6d25;
+
+// используется для отображения цветов. измените их соответствующим образом.
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+ warning: $warning,
+danger: $danger,
+//   light: $light,
+//   dark: $dark,
+// добавьте любой дополнительный цвет ниже
+//   accent: $accent,
+// now bg-accent,btn-accent,etc.. can be called
+// теперь можно называть bg-accent, btn-accent и т.д.
+);
+
+// Import Bootstrap and its default variables
+// @import '~bootstrap/scss/bootstrap.scss';
+
+// @import "../../node_modules/bootstrap/scss/bootstrap";
+
+
+
+
+
+
+
+
+
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss"

@@ -1,0 +1,46 @@
+.divChatsList {
+  height: 100%;
+  width: 100%;
+  color: var(--text-color);
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  position: relative;
+}
+
+.divChatsList div {
+  padding: 2px 5px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.divChatsList :last-child {
+  border: 0;
+  border-radius: 0 0  10px 10px;
+}
+
+.divChatsList :hover {
+  background-color: var(--card-bg-hover);
+}
+
+.messageSerchBorder:hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.divChatsList div :hover {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.divChatItem {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.divChatItem div {
+  border: 0;
+}
+/*# sourceMappingURL=ChatList.module.css.map */
