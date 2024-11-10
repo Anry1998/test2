@@ -4,8 +4,8 @@ docker-compose up --build
 docker compose up --build
 
 
-ssh root@194.67.84.82
-qwFVeflahfy1kCzR
+ssh root@95.163.221.195
+Xd4NIULB53qANroC
 
 
 sudo rm -rf docker-compose.yml
