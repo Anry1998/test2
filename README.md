@@ -13,9 +13,9 @@ sudo rm -rf docker-compose.yml
 touch docker-compose.yml
 
 
-yarn uninstall node-sass
-yarn i node-sass
-yarn rebuild node-sass
+yarn remove node-sass
+
+
 
 
 sudo apt install python3.14# test-deploy-nginx
