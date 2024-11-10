@@ -2,102 +2,102 @@ version: '3.4'
 
 services: 
 
-  backend:
-    build: 
-      context: server-nest-investigator
-    container_name: backend
-    working_dir: /server
-    networks: 
-      - node-network
-    volumes: 
-      - ./server-nest-investigator:/usr/src/app
-      - /usr/src/app/node_modules
-    environment: 
-      - APP_PORT=${APP_PORT}
-      - CLIENT_HOST=${CLIENT_HOST}
-      - DB_HOST=${DB_HOST}
-      - DB_PORT=${DB_PORT}
-      - DB_USERNAME=${DB_USERNAME}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_NAME=${DB_NAME}
-      - DB_SYNCHRONIZATION=${DB_SYNCHRONIZATION}
-      - DB_LOGGING=${DB_LOGGING}
-
-      - JWT_ACCESS_TOKEN_SECRET=${JWT_ACCESS_TOKEN_SECRET}
-      - JWT_ACCESS_TOKEN_EXPIRATION=${JWT_ACCESS_TOKEN_EXPIRATION}
-      - JWT_REFRESH_TOKEN_SECRET=${JWT_REFRESH_TOKEN_SECRET}
-      - WT_REFRESH_TOKEN_EXPIRATION=${JWT_REFRESH_TOKEN_EXPIRATION}
-    tty: true
-    ports: 
-      - "5000:5000"
-    command: yarn run start:prod
-    depends_on:
-       - db_postgres
-
-  # frontend:
+  # backend:
   #   build: 
-  #     context: client-vite-investigator
-  #   container_name: frontend
-  #   working_dir: /client
+  #     context: server-nest-investigator
+  #   container_name: backend
+  #   working_dir: /server
   #   networks: 
   #     - node-network
-  #   environment: 
-  #     - VITE_SERVER_URL=${VITE_SERVER_URL}
-  #     - VITE_SERVER_URL_SOCKET=${VITE_SERVER_URL_SOCKET}
   #   volumes: 
-  #     - ./client-vite-investigator:/client
-  #     - /client/node_modules
+  #     - ./server-nest-investigator:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   environment: 
+  #     - APP_PORT=${APP_PORT}
+  #     - CLIENT_HOST=${CLIENT_HOST}
+  #     - DB_HOST=${DB_HOST}
+  #     - DB_PORT=${DB_PORT}
+  #     - DB_USERNAME=${DB_USERNAME}
+  #     - DB_PASSWORD=${DB_PASSWORD}
+  #     - DB_NAME=${DB_NAME}
+  #     - DB_SYNCHRONIZATION=${DB_SYNCHRONIZATION}
+  #     - DB_LOGGING=${DB_LOGGING}
+
+  #     - JWT_ACCESS_TOKEN_SECRET=${JWT_ACCESS_TOKEN_SECRET}
+  #     - JWT_ACCESS_TOKEN_EXPIRATION=${JWT_ACCESS_TOKEN_EXPIRATION}
+  #     - JWT_REFRESH_TOKEN_SECRET=${JWT_REFRESH_TOKEN_SECRET}
+  #     - WT_REFRESH_TOKEN_EXPIRATION=${JWT_REFRESH_TOKEN_EXPIRATION}
   #   tty: true
   #   ports: 
-  #     - "5173:5173"
-  #   command: yarn run dev
+  #     - "5000:5000"
+  #   command: yarn run start:prod
+  #   depends_on:
+  #      - db_postgres
+
+  frontend:
+    build: 
+      context: client-vite-investigator
+    container_name: frontend
+    working_dir: /client
+    networks: 
+      - node-network
+    environment: 
+      - VITE_SERVER_URL=${VITE_SERVER_URL}
+      - VITE_SERVER_URL_SOCKET=${VITE_SERVER_URL_SOCKET}
+    volumes: 
+      - ./client-vite-investigator:/client
+      - /client/node_modules
+    tty: true
+    ports: 
+      - "5173:5173"
+    command: yarn run dev
 
 
   
 
-  db_postgres:
-    image: postgres
-    container_name: db_postgres
-    restart: always
-    tty: true
-    volumes:
-      - ./data:/var/lib/postgresql/data
-    environment: 
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-      - POSTGRES_DB=${DB_NAME} 
-    ports: 
-      - "5432:5432"
-    networks: 
-      - node-network
+  # db_postgres:
+  #   image: postgres
+  #   container_name: db_postgres
+  #   restart: always
+  #   tty: true
+  #   volumes:
+  #     - ./data:/var/lib/postgresql/data
+  #   environment: 
+  #     - POSTGRES_USER=${DB_USERNAME}
+  #     - POSTGRES_PASSWORD=${DB_PASSWORD}
+  #     - POSTGRES_DB=${DB_NAME} 
+  #   ports: 
+  #     - "5432:5432"
+  #   networks: 
+  #     - node-network
 
 
     # docker run -d -p 5432:5432 --name db_postgres d57ed788c154
     # sudo docker run -d --name my_db_postgres -e POSTGRES_PASSWORD=Aa12345! -e POSTGRES_USER=admin -e POSTGRES_DB=my_first_db -p 5432:5432 postgres
   
-  adminer:
-    image: adminer
-    restart: always
-    depends_on:
-      - db_postgres
-    ports:
-      - 8080:8080
-    networks: 
-      - node-network
-
-  # nginx:
-  #   build: 
-  #     context: nginx
-  #   container_name: nginx
+  # adminer:
+  #   image: adminer
   #   restart: always
-  #   tty: true
-  #   ports: 
-  #     - "80:80"
+  #   depends_on:
+  #     - db_postgres
+  #   ports:
+  #     - 8080:8080
   #   networks: 
   #     - node-network
-  #   depends_on:
-  #     - backend
-  #     - frontend
+
+  nginx:
+    build: 
+      context: nginx
+    container_name: nginx
+    restart: always
+    tty: true
+    ports: 
+      - "80:80"
+    networks: 
+      - node-network
+    depends_on:
+      # - backend
+      - frontend
 
   
 networks: 
