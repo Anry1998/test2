@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
-const bcrypt_1 = require("bcrypt");
+const bcryptjs_1 = require("bcryptjs");
 const crud_employee_service_1 = require("../create-employee/crud-employee.service");
 const token_service_1 = require("./token.service");
 const invalid_credentials_exception_1 = require("./exceptions/invalid credentials.exception");
@@ -32,10 +32,10 @@ let AuthService = class AuthService {
         return arr;
     }
     hashPassword(password) {
-        return (0, bcrypt_1.hash)(password, 10);
+        return (0, bcryptjs_1.hash)(password, 10);
     }
     comparePassword(userDtoPassword, userPassword) {
-        return (0, bcrypt_1.compare)(userDtoPassword, userPassword);
+        return (0, bcryptjs_1.compare)(userDtoPassword, userPassword);
     }
     async registration(userDto) {
         const condidate = await this.crudEmployeeService.getEmployeeByEmail(userDto.email);

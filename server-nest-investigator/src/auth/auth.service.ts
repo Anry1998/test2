@@ -1,6 +1,7 @@
 import { ClassSerializerInterceptor, HttpException, HttpStatus, Injectable, UseInterceptors } from '@nestjs/common';
 
-import { hash, compare } from 'bcrypt';
+
+import { hash, compare } from 'bcryptjs';
 import { CrudEmployeeService } from '../create-employee/crud-employee.service';
 import { CreateEmployeeDto } from 'src/create-employee/dto/create-employee.dto';
 import { TokenService } from './token.service';

@@ -27,3 +27,8 @@ sudo apt install python3.14# test-deploy-nginx
 sudo yarn cache clean -f
 sudo yarn install -g n
 sudo n stable
+
+docker system prune -a
+
+
+yarn add bcryptjs @types/bcryptjs

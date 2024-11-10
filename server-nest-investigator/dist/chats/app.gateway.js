@@ -141,7 +141,7 @@ __decorate([
 ], MyGateway.prototype, "deleteMessage", null);
 exports.MyGateway = MyGateway = __decorate([
     (0, websockets_1.WebSocketGateway)({
-        cors: { origin: 'http://localhost:5173' },
+        cors: { origin: 'http://194.67.84.82:5173' },
     }),
     __metadata("design:paramtypes", [message_service_1.MessageService,
         socket_service_1.SocketService,
