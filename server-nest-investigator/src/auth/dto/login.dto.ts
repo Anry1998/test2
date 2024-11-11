@@ -1,10 +1,10 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class LoginDto {
-  @IsNotEmpty({message: 'Не должно быть пустым'})
-  @IsEmail({}, {message: 'Некоректный email'})
+  @IsEmail({}, {message: 'некоректный email'})
+  @IsNotEmpty({message: 'поле не должно быть пустым' })
   email: string;
 
-  @IsNotEmpty()
+  @IsNotEmpty({message: 'поле не должно быть пустым' })
   password: string;
 }

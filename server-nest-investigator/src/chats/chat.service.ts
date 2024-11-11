@@ -139,6 +139,10 @@ export class ChatService {
            .query(`SELECT * FROM chat 
            WHERE "id" IN (${catsIdList})`)
 
+        if (!finalChats) {
+            throw new HttpException(`Введен неверный пароль`, HttpStatus.BAD_REQUEST)
+        }
+
         console.log('finalChats:', finalChats)
         return finalChats
     }

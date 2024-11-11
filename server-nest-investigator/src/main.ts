@@ -1,6 +1,6 @@
 import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
- 
+  
 import * as cookieParser from 'cookie-parser';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AccessTokenGuard } from './auth/guard/access-token.guard';
@@ -18,7 +18,7 @@ import { EmployeeIdInQuery } from './chats/guard/employee-id-in-query.guard';
 
 async function bootstrap() { 
   const PORT = process.env.APP_PORT || 5000 
-
+  
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
 
@@ -38,7 +38,7 @@ async function bootstrap() {
   // SwaggerModule.setup('api', app, document)
 
   const configServise = app.get(ConfigService)
-  const hhtpAdapterHost = app.get(HttpAdapterHost)  
+    
  
   app.useGlobalGuards( 
     new JwtAuthGuard(new JwtService(), configServise, new Reflector()),
@@ -46,9 +46,11 @@ async function bootstrap() {
     // new EmployeeIdInQuery(),
   )
   app.useGlobalPipes(new ValidationPipe()) 
+
+  const hhtpAdapterHost = app.get(HttpAdapterHost)
   app.useGlobalFilters(
-    new HttpExceptionFilter(configServise),
-    new AllExceptionsFilter(hhtpAdapterHost),
+    new HttpExceptionFilter(configServise, hhtpAdapterHost),
+    // new AllExceptionsFilter(hhtpAdapterHost),
   )
   
   

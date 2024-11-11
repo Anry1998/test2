@@ -21,8 +21,9 @@ let AllExceptionsFilter = AllExceptionsFilter_1 = class AllExceptionsFilter {
     catch(exception, host) {
         const { httpAdapter } = this.httpAdapterHost;
         const ctx = host.switchToHttp();
+        console.log('exception', exception);
         const httpStatus = common_1.HttpStatus.INTERNAL_SERVER_ERROR;
-        this.logger.error(`Exception: ${exception.message}, stack: ${exception.stack}`);
+        this.logger.error(`Exception: ${exception.message}, stack: ${exception.stack}, status: ${exception.status}`);
         const responseBody = {
             status: httpStatus,
             message: 'Internal Server error 😒',

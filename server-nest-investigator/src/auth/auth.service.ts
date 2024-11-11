@@ -42,8 +42,8 @@ export class AuthService {
   async registration(userDto: RegistrationDto) { 
     const condidate = await this.crudEmployeeService.getEmployeeByEmail(userDto.email)
     if (condidate) {
-      throw new InvalidCredentialsException(`Пользователь с таким email: ${userDto.email} уже существует`)
-      //  throw new HttpException(`Пользователь с таким email: ${userDto.email} уже существует`, HttpStatus.BAD_REQUEST)
+      // throw new InvalidCredentialsException(`Пользователь с таким email: ${userDto.email} уже существует`)
+      throw new HttpException(`Пользователь с таким email: ${userDto.email} уже существует`, HttpStatus.BAD_REQUEST)
     } 
     const hashPassword = await this.hashPassword(userDto.password)
     const employee = await this.crudEmployeeService.createEmployee({...userDto, password: hashPassword})
@@ -58,12 +58,16 @@ export class AuthService {
   async login(userDto: LoginDto) {
     const condidate = await this.crudEmployeeService.getEmployeeByEmail(userDto.email)
     if (!condidate) {
+      throw new HttpException(`Пользователь с email: ${userDto.email} не был найден`, HttpStatus.UNAUTHORIZED)
       throw new InvalidCredentialsException(`Пользователь с email: ${userDto.email} не был найден`)
-      // throw new HttpException(`Пользователь с email: ${userDto.email} не был найден`, HttpStatus.BAD_REQUEST)
+      // throw new HttpException(`Пользователь с email: ${userDto.email} не был найден`, HttpStatus.UNAUTHORIZED)
+
     }
     const comparePassword = await this.comparePassword(userDto.password, condidate.password)
     if (!comparePassword) {
-      throw new HttpException(`Введен неверный пароль`, HttpStatus.BAD_REQUEST)
+      throw new HttpException(`Введен неверный пароль`, HttpStatus.UNAUTHORIZED)
+      throw new InvalidCredentialsException(`Введен неверный пароль`) 
+      throw new Error('Введен неверный пароль')
     }
     const abbreviatedPostList = this.abbreviatedPostList(condidate.post)
     const tokens = await this.tokenService.generateTokens({id: condidate.id, email: condidate.email, posts: abbreviatedPostList, organId: condidate.organId, divisionId: condidate.divisionId } )
@@ -82,13 +86,13 @@ export class AuthService {
 
   async refresh(refreshToken: string) {
     if (!refreshToken) {
-      throw new HttpException('Токен отсутствует', HttpStatus.FORBIDDEN)
+      throw new HttpException('Токен отсутствует', HttpStatus.UNAUTHORIZED)
     }
     const employeeData = await this.tokenService.validateRefreshToken(refreshToken)
     const employee = await this.crudEmployeeService.getEmployeeById(employeeData.payload.id)
     const tokenFromDb = await this.tokenService.findRefreshToken(refreshToken) 
     if (!employeeData || !tokenFromDb || !employee) {
-      throw new HttpException('Ошибка авторизации', HttpStatus.FORBIDDEN)
+      throw new HttpException('Ошибка авторизации', HttpStatus.UNAUTHORIZED)
     }
     const tokens = await this.tokenService.generateTokens({id: employeeData.payload.id, email: employeeData.payload.email, posts: employeeData.payload.post, organId: employeeData.payload.organId, divisionId: employeeData.payload.divisionId})
     await this.tokenService.saveTokenAfterRefresh(tokenFromDb.id, tokens.refreshToken)

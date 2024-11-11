@@ -14,6 +14,7 @@ services:
       - /usr/src/app/node_modules
     environment: 
       - APP_PORT=${APP_PORT}
+      - NODE_ENV=${NODE_ENV}
       - CLIENT_HOST=${CLIENT_HOST}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}

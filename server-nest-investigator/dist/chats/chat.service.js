@@ -118,6 +118,9 @@ let ChatService = class ChatService {
         const finalChats = await this.dataSource
             .query(`SELECT * FROM chat 
            WHERE "id" IN (${catsIdList})`);
+        if (!finalChats) {
+            throw new common_1.HttpException(`Введен неверный пароль`, common_1.HttpStatus.BAD_REQUEST);
+        }
         console.log('finalChats:', finalChats);
         return finalChats;
     }

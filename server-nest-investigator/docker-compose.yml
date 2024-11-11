@@ -1,18 +1,18 @@
 version: '3.4'
 
 services:
-  postgres:
+  db_postgres:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USERNAME: postgres
-      POSTGRES_DB: app
+      POSTGRES_PASSWORD: Aa12345!
+      POSTGRES_USERNAME: admin
+      POSTGRES_DB: my_first_db
     ports:
       - 5432:5432
   adminer:
     image: adminer
     restart: always
     depends_on:
-      - postgres
+      - db_postgres
     ports:
       - 8080:8080

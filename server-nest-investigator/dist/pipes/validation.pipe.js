@@ -12,6 +12,9 @@ const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const validation_exception_1 = require("../exceptions/validation.exception");
 let ValidationPipe = class ValidationPipe {
+    constructor() {
+        this.logger = new common_1.Logger();
+    }
     async transform(value, metadata) {
         const obj = (0, class_transformer_1.plainToClass)(metadata.metatype, value);
         const errors = await (0, class_validator_1.validate)(obj);
@@ -19,6 +22,7 @@ let ValidationPipe = class ValidationPipe {
             let messages = errors.map(err => {
                 return `${err.property} - ${Object.values(err.constraints).join(', ')}`;
             });
+            this.logger.verbose(messages);
             throw new validation_exception_1.ValidationException(messages);
         }
         return value;

@@ -15,12 +15,12 @@ class LoginDto {
 }
 exports.LoginDto = LoginDto;
 __decorate([
-    (0, class_validator_1.IsNotEmpty)({ message: 'Не должно быть пустым' }),
-    (0, class_validator_1.IsEmail)({}, { message: 'Некоректный email' }),
+    (0, class_validator_1.IsEmail)({}, { message: 'некоректный email' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'поле не должно быть пустым' }),
     __metadata("design:type", String)
 ], LoginDto.prototype, "email", void 0);
 __decorate([
-    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsNotEmpty)({ message: 'поле не должно быть пустым' }),
     __metadata("design:type", String)
 ], LoginDto.prototype, "password", void 0);
 //# sourceMappingURL=login.dto.js.map
