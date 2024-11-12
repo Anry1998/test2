@@ -1,4 +1,4 @@
-FROM node:20.18.0-alpine as build
+FROM node:20.18.0 as build
 WORKDIR /client    
 # WORKDIR /usr/src/app
 COPY package*.json .
